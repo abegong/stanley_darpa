@@ -1,0 +1,12 @@
+Whoosh is a django project for running (w)orldwide (h)astily (o)rganized (s)cavenger (h)unts.  Participants upload photos of people, places, and things from around the world, and the site counts down to the deadline, broadcasts finds, and tallies scores in real time.
+
+This game/social experiment was originally designed as an exercise for an undergraduate class in systems thinking at the University of Michigan. There, it was called Stanley-Darpa. The code still bears the marks of the original name.
+
+Much-needed improvements:
+* Add admin pages to set up teams, instructions, and scoring systems, and approve/reject submitted photos.
+* Change client-side pages to properly manage the game state.
+* Block submissions after the deadline.
+
+Things I'd love to get around to:
+* Add a world map to track submissions by IP address.
+* Add a mobile version.
