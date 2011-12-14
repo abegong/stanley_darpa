@@ -1,0 +1,46 @@
+{% extends "single_column.html" %}
+
+{% block header %}Cities{% endblock %}
+
+{% block style %}
+ <style type="text/css">
+ {% include "base_style.css" with width=917 %}
+ </style>
+{% endblock %}
+
+
+{% block content %}
+<script type="text/javascript">
+$(function(){
+  {% for e in events %}
+//    $("#{{e.team.id}}-{{e.city.id}}").html("<img class='ui-icon ui-icon-check'/>{% if e.on_campus %}<img class='ui-icon ui-icon-check'/>{% endif %}");
+    $("#{{e.team.id}}-{{e.city.id}}").html("{% if e.on_campus %}Local!{% else %}Remote{% endif %}&nbsp;&nbsp;");
+  {% endfor %}
+
+  $("tr.city-row").hover(
+    function(){$(this).css({"background-color":"#222"})},
+    function(){$(this).css({"background-color":""})}
+  );
+});
+</script>
+
+<table  style="text-align:right;">
+  <tr>
+    <td></td>
+    {% for t in teams %}
+    <td>{{t}}</td>
+    {% endfor %}
+  </tr>
+{% for c in cities %}
+  <tr class="city-row">
+    <td width="30%">{{c.name}}</td>
+    {% for t in teams %}
+    <td style="text-align:right;width:15%;" id="{{t.id}}-{{c.id}}"></td>
+    {% endfor %}
+  </tr>
+{% endfor %} 
+</table>
+<br/><br/>
+Note: this page does not update in real time.  To see the most recent updates, please refresh the page.
+{% endblock %}
+

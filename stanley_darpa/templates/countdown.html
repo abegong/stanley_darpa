@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+
+{% block title %}Stanley Darpa{% endblock %}
+{% block script %}
+<script type="text/javascript">
+ function createEventBoxes(k){
+  j = $.parseJSON(k);
+
+  alert(k);
+  s = "";
+  for( i in j ){
+   e = j[i];
+   s += '<div class="leftBox" event_id='+e["pk"]+' old_news="false">';
+   s += '<h4>{{ '+e.team.name+' }} got {{ '+e.city.name' }}!</h4>';
+   s += '<img src="static/media/{{ '+e.pic_file+'}}" style="width:200px;"></img><br/>'
+//{% if event.on_campus %}<b>On campus! 3x bonus!</b> {% endif %}<br/>
+//{{ event.time|date:"H:i:s Y-m-d" }}<br/>
+   s += '</div>';
+  }
+  return s;
+ };
+
+ function updateLeftBoxes(){
+  current_id = $('.leftBox:first').attr('event_id');
+
+  if( current_id == undefined ){ query_string = 'getEvents'; }
+  else{ query_string = 'getEvents?sinceId='+current_id }
+
+  $.get(query_string, function(j){
+//   $('#leftBoxPlaceHolder').prepend(createEventBoxes(j));
+   $('#leftBoxPlaceHolder').prepend(j);
+   $('.leftBox:not(.oldBox)')
+    .hide()
+    .slideDown("slow");
+   $('.leftBox:gt(10)').remove();
+   $('.leftBox').addClass("oldBox");
+   addStyles();
+   setTimeout( "updateLeftBoxes();", 5000 );
+  }, type="html");
+ }
+
+ function maybeAddEvent(){
+  if( Math.random() > .75 ){
+    $.get('addEvent', null, null );
+  }
+ };
+
+// var sec = 60*23+22;
+ var timer = setInterval(function() { 
+   var now = new Date();
+   var deadline = new Date(year={{deadline.year}},month={{deadline.month}},day={{deadline.day}},hour={{deadline.hour}},minute={{deadline.min}},0,0);
+   sec = Math.floor((deadline-now)/(1000))
+   if( sec < 0 ){ sec = 0; }
+
+   h = Math.floor( sec/3600 );
+   m = Math.floor( (sec%3600)/60 );
+   s = sec%60;
+   if( m < 10 ){ m = "0"+m; }
+   if( s < 10 ){ s = "0"+s; }
+//   sec--;
+   $('#timer').text( h + ":" + m + ":" + s );
+   if (sec == -1) {
+      $('#timer').fadeOut('fast');
+      clearInterval(timer);
+   } 
+ }, 1000);
+
+ $(function(){
+  scores = {{scores}};
+
+/*
+  $("#cityBox")
+    .css({"cursor":"pointer"})
+    .click(function(){
+      window.location = "/cities";
+    });
+
+  $(".team-button")
+    .css({"cursor":"pointer"})
+    .click(function(){
+      window.location = "/teamDetail?id="+$(this).attr("team_id");
+    })
+*/
+  $(".team-button")
+    .each(function(){
+      $(this).find("span").html(scores[$(this).attr("team_id")]);
+//      $(this).find("span").html( $(this).attr("team_id") );
+      });
+
+  updateLeftBoxes();
+//  setInterval( "maybeAddEvent();", 50*1000 );
+  $("span.city").each(function(){
+   c = $(this).attr("count");
+   if( c==0 ){ $(this).css({"color":"#666"}); }
+   if( c==1 ){ $(this).css({"color":"#d44"}); }
+   if( c>1 ){ $(this).css({"color":"#fff"}); }
+  });
+ });
+</script>
+{% endblock %}
+
+{% block main_box %}
+<div id="wideBox">
+<div id="rightContent">
+
+<div class="contentBox">
+ <div class="contentHeader"><h2>Countdown</h2></div>
+ <div class="contentContent">
+ <div id="timer" class="ui-widget ui-state-default ui-corner-all" style="width:90%; text-align:center; font-size:48px;"></div>
+ </div>
+ <div class="contentFooter" ></div>
+</div>
+
+<div id="teamBox" class="contentBox">
+ <div class="contentHeader"><h2>Rankings</h2></div>
+ <div class="contentContent">
+{% for team in teams %}
+  <div class="team-button ui-widget ui-state-default ui-corner-all" style="width:90%; margin:2px; margin-left:0px;" team_id="{{team.id}}"><h3><span style="float:left; width:50px;"></span> {{team}}</h3></div>
+{% endfor %}
+ <p style="color:#666;">
+   Note: Rankings and cities do not update automatically.  Refresh your browser to get the latest updates.
+ </p>
+ </div>
+ <div class="contentFooter" ></div>
+</div>
+
+<div id="cityBox" class="contentBox">
+ <div class="contentHeader"><h2>Cities</h2></div>
+ <div class="contentContent">
+{% for city in cities %}
+* <span class="city" count="{{ city.event_count }}">{{ city.name }}</span>
+{% endfor %}
+
+  <p>
+   Legend:<br/>
+   <span style="margin-left:20px;color:#666">Not found</span><br/>
+   <span style="margin-left:20px;color:#d44">Found once: Double points!</span><br/>
+   <span style="margin-left:20px;color:#fff">Found twice or more</span><br/>
+  </p>
+
+ </div>
+ <div class="contentFooter" > </div>
+</div>
+</div>
+
+<div id="leftBoxPlaceHolder"></div>
+
+</div>
+{% endblock %}
+

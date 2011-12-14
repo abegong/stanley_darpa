@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block main_box %}
+ <div id="mainBox">
+  <div id="mainHeader"><h1>
+   {% block header %}{% endblock %}
+  </h1></div>
+  <div id="mainContent">
+    {% block content %}{% endblock %}
+  </div>
+  <div id="mainFooter">
+    {% block footer %}{% endblock %}
+  </div>
+ </div>
+{% endblock %}

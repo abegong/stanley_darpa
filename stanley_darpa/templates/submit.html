@@ -1,0 +1,44 @@
+{% extends "single_column.html" %}
+
+{% block title %}Stanley Darpa{% endblock %}
+
+{% block header %}Submit{% endblock %}
+
+{% block content %}
+<form  enctype="multipart/form-data" action="/submit" method="post">{% csrf_token %}
+
+<h2>{{ success }}</h2>
+
+<h3>Upload picture</h3>
+<p>{{ form.pic_file.errors }}</p>
+<p>{{ form.pic_file }}</p>
+
+<h3>Which city is this person from?</h3>
+<p>{{ form.city.errors }}</p>
+<p>{{ form.city }}</p>
+
+<h3>Which team are you on?</h3>
+<p>{{ form.team.errors }}</p>
+<p>{{ form.team }}</p>
+
+<h3>Is this person on or off campus?</h3>
+<p>{{ form.on_campus.errors }}</p>
+<p>
+  <span><input type="radio" name="on_campus" id="id_on_campus" value="1">On UM campus in Ann Arbor</input></span><br/>
+  <span><input type="radio" name="on_campus" id="id_on_campus" value="0">Somewhere else</input></span>
+</p>
+
+<h3>Which team member found this person?</h3>
+<p>{{ form.uniqname.errors }}</p>
+<p>
+  {{ form.uniqname }}
+</p>
+
+<h3>How did you find this person?</h3>
+<p>{{ form.story }}</p>
+
+<input type="submit" value="Submit" class="button"></input>
+</form>
+
+{% endblock %}
+

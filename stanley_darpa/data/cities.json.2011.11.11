@@ -1,0 +1,38 @@
+[
+  {
+    "pk": 1, 
+    "model": "stanley_darpa.city", 
+    "fields": {
+      "state": "MI", 
+      "name": "Ann Arbor", 
+      "population": 113000
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "stanley_darpa.city", 
+    "fields": {
+      "state": "MI", 
+      "name": "Bann Arbor", 
+      "population": 113000
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "stanley_darpa.city", 
+    "fields": {
+      "state": "MI", 
+      "name": "Cann Arbor", 
+      "population": 113000
+    }
+  }, 
+  {
+    "pk": 4, 
+    "model": "stanley_darpa.city", 
+    "fields": {
+      "state": "MI", 
+      "name": "Dann Arbor", 
+      "population": 113000
+    }
+  }
+]

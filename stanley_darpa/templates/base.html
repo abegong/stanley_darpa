@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+<head>
+ <title>{% block title %}{% endblock %}</title>
+ {% block style %}
+ <!-- <link rel="stylesheet" href="static/stanley_darpa.css" type="text/css"> -->
+ <style type="text/css">
+ {% include "base_style.css" with width=717 %}
+ </style>
+ {% endblock %}
+
+ <link type="text/css" href="static/css/ui-darkness/jquery-ui-1.8.16.custom.css" rel="stylesheet" />	
+ <script type="text/javascript" src="static/js/jquery-1.6.2.min.js"></script>
+ <script type="text/javascript" src="static/js/jquery-ui-1.8.16.custom.min.js"></script>
+ <script type="text/javascript">
+ function addStyles(){
+  $("#menuBar").addClass("ui-widget ui-state-default ui-corner-all");
+
+  $("#mainBox").addClass("ui-widget ui-state-default ui-corner-all");
+  $("#mainHeader").addClass("ui-widget-header ui-state-active ui-corner-top");
+  $("#mainContent").addClass("ui-widget-content");
+  $("#mainFooter").addClass("ui-widget-footer");
+
+  $(".leftBox").addClass("ui-widget-content ui-corner-all");
+  $("h3, h4").addClass("ui-widget-header ui-state-default ui-corner-all");
+
+  $(".contentBox").addClass("ui-widget ui-state-default ui-corner-all");
+  $(".contentHeader").addClass("ui-widget-header ui-state-active ui-corner-all");
+  $(".contentContent").addClass("ui-widget-content");
+  $(".contentFooter").addClass("ui-widget-footer");
+
+  $(".button").button().addClass("ui-state-focus");
+ };
+
+ $(function(){
+  addStyles();
+ });
+</script>
+{% block script %}{% endblock %}
+</head>
+
+<body>
+ <div id="menuBar">
+  <a href="/">Home</a>
+  <a href="rules">Rules</a>
+  <a href="cities">Cities</a>
+  <a href="submit">Submit</a>
+  <a href="countdown">Countdown</a>
+ </div>
+
+{% block main_box %}{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,99 @@
+/********************** Main ***************************/
+body {
+	background-color:#000;
+}
+
+/*** Standard format pages ***/
+
+#menuBar {
+	width=100%;
+	padding:5px;
+	padding-left:40px;
+	margin-bottom:20px;
+}
+#menuBar a{
+	margin:2px 30px 2px 2px;
+}
+
+#mainBox {
+	margin: 0px auto;
+	text-align: left;
+	width: {{width}}px;/*717px;*/
+	position:relative;
+}
+#mainHeader{
+	padding:5px 5px 5px 20px;
+/*	font-size:26px; */
+}
+#mainContent{
+	padding:20px;
+/*	font-size:22px; */
+}
+
+#mainContent p{
+	margin:20px;
+	margin-bottom:30px;
+}
+
+
+
+/*** Wide format pages ***/
+
+#wideBox {
+	margin: 0px auto;
+	text-align: left;
+	width: 850px;
+	position:relative;
+}
+#rightContent{
+	float: right;
+	width: 450px; /*Width of right column*/
+}
+.leftBox{
+	width:330px;
+	margin-bottom:20px;
+	padding:10px;
+	text-align:center;
+}
+.contentBox{
+	margin:0px 0px 30px 0px;
+}
+.contentHeader{
+	padding:5px 5px 5px 20px;
+	font-size:18px;
+}
+.contentContent{
+	padding:20px;
+}
+.contentFooter{}
+
+
+/*** headers ***/
+h1{
+	margin:10px;
+}
+
+h2{
+	margin:5px;
+	font-size:22px;
+}
+
+h3{
+	margin:10px;
+	margin-bottom:10px;
+  padding:5px;
+	padding-left:10px;
+	font-size:18px;
+}
+
+h4{
+	margin:2px;
+	padding-left:10px;
+	font-size:14px;
+}
+
+
+
+ul.errorlist li{
+	color:#f00;
+}

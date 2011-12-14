@@ -1,0 +1,8 @@
+{% for event in events %}
+<div class="leftBox" event_id="{{ event.id }}" old_news="false">
+<h4>{{ event.team.name }} got {{ event.city.name }}!</h4>
+<img src="{{ MEDIA_URL }}{{event.pic_file}}" style="width:200px;"></img><br/>
+{% if event.on_campus %}<b>On campus! 3x bonus!</b> {% endif %}<br/>
+{{ event.time|date:"H:i:s Y-m-d" }}<br/>
+</div>
+{% endfor %}

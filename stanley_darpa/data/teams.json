@@ -1,0 +1,44 @@
+[
+  {
+    "pk": 1, 
+    "model": "stanley_darpa.team", 
+    "fields": {
+      "name": "Team Lyapunov"
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "stanley_darpa.team", 
+    "fields": {
+      "name": "Team Fermi"
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "stanley_darpa.team", 
+    "fields": {
+      "name": "Team Nowak"
+    }
+  }, 
+  {
+    "pk": 4, 
+    "model": "stanley_darpa.team", 
+    "fields": {
+      "name": "Team Schelling"
+    }
+  },
+  {
+    "pk": 5, 
+    "model": "stanley_darpa.team", 
+    "fields": {
+      "name": "Team Bass"
+    }
+  },
+  {
+    "pk": 6, 
+    "model": "stanley_darpa.team", 
+    "fields": {
+      "name": "Team Markov"
+    }
+  }
+]

@@ -1,0 +1,31 @@
+===== Done =====
+* On the ticker page, highlight cities depending on how many teams have found them
+* alphabetize the cities...they seem like they might be in population order?
+* Cities: if you want to highlight them based on the number who have found them, I suggest either doing a number in parenthesis (easiest) or some gradation (this may be hard to discern on a phone, but there are only 6 teams, so it wouldn't be too hard, maybe?)
+* On the ticker page, make the countdown timer actually count down
+* On the ticker page, add scores to team rankings
+* Add a "Cities" page that will list individual cities and which teams have found them.
+* Prettify cities page
+
+=== Next steps ===
+* Build teamDetails page
+* prettify teamDetails page
+* Sort team scores on ticker page
+* Animate team scores on ticker page
+* Animate cities on ticker page
+
+
+
+===== Essential =====
+* Add a "Team" page that will give details about individual teams to help with strategizing and counter-strategizing
+
+===== Optional =====
+
+
+Ideas
+* On the ticker page, change and animate rankings, scores, and cities light as new events come in
+
+* Clean up the "submit" page -- Is this the way we want it to work?  It feels slow to me. Are there fields we can drop?
+
+2. If you click the team names, it would be nice if you could see all the posts each team has done (this might come with the points updating). If I immediately check the ticker, I can see my picture that I just posted (for about 30 seconds or so) but  I'm not sure that the ticker would cycle back through again for me to catch my upload if I am a little slow to click over.
+
