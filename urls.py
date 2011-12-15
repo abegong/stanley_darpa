@@ -3,8 +3,10 @@ from django.views.generic import list_detail
 from stanley_darpa.models import Event
 
 # Uncomment the next two lines to enable the admin:
-from django.contrib import admin
-admin.autodiscover()
+#from django.contrib import admin
+#admin.autodiscover()
+
+import settings
 
 urlpatterns = patterns('',
     # Examples:
@@ -28,5 +30,8 @@ urlpatterns = patterns('',
     url(r'^addEvent$', 'stanley_darpa.views.addRandomEvent'),
 
 #    url(r'^upload', 'stanley_darpa.views.upload_file'),
+
+    url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT,}),
+
 )
 
