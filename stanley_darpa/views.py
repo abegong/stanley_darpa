@@ -7,7 +7,7 @@ from django.core import serializers
 from django.template import RequestContext
 
 from stanley_darpa.models import Team, City, Event, EventForm, calc_team_scores
-import random, glob
+import random, glob, datetime
 
 def index(request):
     t = template.loader.get_template("splash.html")
@@ -44,13 +44,19 @@ def countdown(request):
 #      "events": Event.objects.all()[:10],
     })
 #    return HttpResponse(t.render(c))
+
+
+    ###This is a hack to put the site in demo mode!!!
+    now = datetime.datetime.now()
+
     return render_to_response('countdown.html', {
       'events': Event.objects.all(),
 #      "cities": City.objects.all(),
       "cities":[ {"name":city.name, "event_count":Event.objects.filter(city=city.id).count()} for city in City.objects.all()],
       "teams": Team.objects.all(),#[team.name for team in Team.objects.all()],
       "scores": calc_team_scores(),
-      'deadline':{'year':2011,'month':11,'day':7,'hour':13,'min':0},
+      'deadline':{'year':now.year,'month':(now.month)-1,'day':now.day,'hour':now.hour+2,'min':0},
+#      'deadline':{'year':2011,'month':11,'day':7,'hour':13,'min':0},
     })
 
 """

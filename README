@@ -5,6 +5,7 @@ Much-needed improvements:
 * Add admin pages to set up teams, instructions, and scoring systems, and approve/reject submitted photos.
 * Change client-side pages to properly manage the game state.
 * Block submissions after the deadline.
+* A good deep-cleaning. There are lots of sloppy sections of this code.
 
 Things I'd love to get around to:
 * Add a world map to track submissions by IP address.
